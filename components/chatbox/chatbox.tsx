@@ -1,29 +1,35 @@
+// ChatBox.tsx
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SendHorizontal } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Minus } from "lucide-react";
+import { SendHorizontal, Minus } from "lucide-react";
+
+interface ChatBoxProps {
+  showChat: boolean;
+  setShowChat: (showChat: boolean) => void;
+  messages: string[];
+  addMessage: (message: string) => void;
+}
+
 export default function ChatBox({
   showChat,
   setShowChat,
-}: {
-  showChat: boolean;
-  setShowChat: (showChat: boolean) => void;
-}) {
+  messages,
+  addMessage,
+}: ChatBoxProps) {
   const [inputValue, setInputValue] = useState("");
+
+  const handleAddMessage = () => {
+    if (inputValue.trim() !== "") {
+      addMessage(inputValue);
+      setInputValue("");
+    }
+  };
 
   return (
     <>
       {showChat && (
-        <div className="fixed bottom-0 right-7 h-[440px] w-[330px] translate-y-[-60px] justify-between overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm">
+        <div className="fixed bottom-0 right-3 h-[440px] w-[330px] translate-y-[-60px] justify-between overflow-hidden rounded-2xl border bg-card text-card-foreground shadow-sm">
           <div className="mb-3 flex flex-row items-center space-y-1.5 bg-blue-600 p-4">
             <div className="flex w-full items-center justify-between">
               <div className="flex items-center space-x-4 ">
@@ -40,29 +46,37 @@ export default function ChatBox({
               </div>
               <Minus
                 className="cursor-pointer text-end text-white"
-                onClick={(e) => setShowChat(!showChat)}
+                onClick={() => setShowChat(!showChat)}
               />
             </div>
           </div>
-          <div className="h-[64%] p-6 pt-0">
+          <div className="h-[64%] overflow-auto p-6 pt-0">
             <div className="space-y-4">
-              <div className="dark:#303030 flex w-max max-w-[75%] flex-col gap-2 rounded-3xl bg-muted px-3 py-2 text-sm">
-                Hi, how can I help you today?
-              </div>
-              {/* Add more chat messages here */}
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className="dark:#303030 flex w-max max-w-[75%] flex-col gap-2 rounded-3xl bg-muted px-3 py-2 text-sm"
+                >
+                  {message}
+                </div>
+              ))}
             </div>
           </div>
           <div className="mb-2 mt-1 flex items-center p-6 pt-0">
             <Input
               className="mr-2 h-10 rounded-xl"
               placeholder="Type your message..."
-              value={inputValue} // Set input value
-              onChange={(e) => setInputValue(e.target.value)} // Handle input change
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") handleAddMessage();
+              }}
             />
-            <Button className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-xl border border-input bg-blue-600 text-sm font-medium text-white  hover:bg-blue-800">
-              <p className="text-xl">
-                <SendHorizontal size={15} strokeWidth={2} />
-              </p>
+            <Button
+              className="ml-auto inline-flex h-10 w-10 items-center justify-center rounded-xl border border-input bg-blue-600 text-sm font-medium text-white hover:bg-blue-800"
+              onClick={handleAddMessage}
+            >
+              <SendHorizontal size={15} strokeWidth={2} />
             </Button>
           </div>
         </div>

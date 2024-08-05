@@ -1,5 +1,4 @@
 import { useIssueDetails } from "@/hooks/query-hooks/use-issue-details";
-import { type UserResource } from "@clerk/types";
 import {
   Editor,
   type EditorContentType,
@@ -15,6 +14,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import { EditorPreview } from "@/components/text-editor/preview";
 import { Button } from "@/components/ui/button";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import type { Comment } from "@/utils/type";
 
 dayjs.extend(relativeTime);
 
@@ -48,7 +48,7 @@ const Comments: React.FC<{ issue: IssueType }> = ({ issue }) => {
       issueId: issue.id,
       content: JSON.stringify(state),
       // eslint-disable-next-line
-      authorId: undefined,
+      authorId: "",
     });
     setIsWritingComment(false);
   }
@@ -76,7 +76,7 @@ const Comments: React.FC<{ issue: IssueType }> = ({ issue }) => {
         )}
       </div>
       <div ref={ref} className="flex flex-col gap-y-5 pb-5">
-        {comments?.map((comment: any) => (
+        {comments?.map((comment: Comment) => (
           <CommentPreview key={comment.id} comment={comment} user={undefined} />
         ))}
       </div>
@@ -85,8 +85,8 @@ const Comments: React.FC<{ issue: IssueType }> = ({ issue }) => {
 };
 
 const CommentPreview: React.FC<{
-  comment: any;
-  user: UserResource | undefined | null;
+  comment: Comment;
+  user: any | undefined | null;
 }> = ({ comment, user }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isAuthenticated, openAuthModal] = useIsAuthenticated();
@@ -173,7 +173,7 @@ const CommentPreview: React.FC<{
 
 const AddComment: React.FC<{
   onAddComment: () => void;
-  user: UserResource | undefined | null;
+  user: any | undefined | null;
   commentsInViewport: boolean;
 }> = ({ onAddComment, user, commentsInViewport }) => {
   function handleAddComment(event: React.MouseEvent<HTMLInputElement>) {

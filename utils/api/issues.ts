@@ -71,10 +71,10 @@ export const issuesRoutes = {
       issueId: string;
     } & PostCommentBody
   ) => {
-    const { issueId, content, authorId } = payload;
+    const { issueId, content } = payload;
     const { data } = await axios.post<GetIssueCommentResponse>(
-      `${baseUrl}/api/issues/${issueId}/comments`,
-      { content, authorId },
+      `${baseUrl}/comments`,
+      { content, issueId },
       { headers: getHeaders() }
     );
 
