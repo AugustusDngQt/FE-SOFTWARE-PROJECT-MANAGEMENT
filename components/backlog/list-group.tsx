@@ -84,7 +84,7 @@ const ListGroup: React.FC<{ className?: string }> = ({ className }) => {
       )}
     >
       <DragDropContext onDragEnd={onDragEnd}>
-        {sprints.map((sprint) => (
+        {sprints.map((sprint: Sprint) => (
           <div key={sprint.id} className="my-3">
             <SprintList
               sprint={sprint}

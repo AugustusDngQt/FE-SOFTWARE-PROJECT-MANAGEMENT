@@ -16,7 +16,7 @@ import { useIssues } from "@/hooks/query-hooks/use-issues";
 import { Avatar } from "../avatar";
 import { toast } from "../toast";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
-import { type DefaultUser } from "@prisma/client";
+import { DefaultUser } from "@/utils/type";
 
 const IssueAssigneeSelect: React.FC<{
   issue: IssueType;
@@ -44,6 +44,7 @@ const IssueAssigneeSelect: React.FC<{
     updateIssue(
       {
         issueId: issue.id,
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         assigneeId: value === "unassigned" ? null : value,
       },
       {

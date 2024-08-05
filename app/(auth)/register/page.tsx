@@ -54,7 +54,7 @@ export default function RegisterPage() {
               </div>
               <Button
                 type="submit"
-                className="w-full items-center justify-center bg-primary text-primary-foreground hover:bg-blue-500"
+                className="w-full items-center justify-center bg-primary text-primary-foreground hover:bg-slate-100"
               >
                 Register
               </Button>

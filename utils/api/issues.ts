@@ -53,7 +53,6 @@ export const issuesRoutes = {
     const { data } = await axios.patch<PatchIssueResponse>(
       `${baseUrl}/issues/${issueId}`,
       body,
-
       { headers: getHeaders() }
     );
 
@@ -61,7 +60,7 @@ export const issuesRoutes = {
   },
   deleteIssue: async ({ issueId }: { issueId: string }) => {
     const { data } = await axios.delete<PostIssueResponse>(
-      `${baseUrl}/api/issues/${issueId}`,
+      `${baseUrl}/issues/${issueId}`,
       { headers: getHeaders() }
     );
 

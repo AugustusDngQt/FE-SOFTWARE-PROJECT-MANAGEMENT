@@ -1,6 +1,6 @@
 import { type IssueCountType } from "./types";
 import { type IssueType } from "@/utils/types";
-import type { DefaultUser, Issue } from "./type";
+import type { DefaultUser, Issue, Sprint } from "./type";
 
 // type Value<T> = T extends Promise<infer U> ? U : T;
 

@@ -9,17 +9,17 @@ import { DescriptionField } from "./fields/description";
 import { useSprints } from "@/hooks/query-hooks/use-sprints";
 import { FormSubmit } from "@/components/form/submit";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
-import { type Sprint } from "@/utils/type";
+import { ESprintStatus, type Sprint } from "@/utils/type";
 
 export type FormValues = {
   name: string;
-  duration: "ONE_WEEK" | "TWO_WEEKS" | "THREE_WEEKS" | "FOUR_WEEKS" | "CUSTOM";
+  duration: "1 week" | "2 weeks" | "3 weeks" | "4 weeks" | "custom";
   startDate: Date;
   endDate: Date;
   description: string;
 };
 
-export const DEFAULT_DURATION = "ONE_WEEK";
+export const DEFAULT_DURATION = "1 week";
 
 const StartSprintForm: React.FC<{
   sprint: Sprint;
@@ -56,7 +56,7 @@ const StartSprintForm: React.FC<{
     updateSprint(
       {
         sprintId: sprint.id,
-        status: "ACTIVE",
+        status: ESprintStatus.ACTIVE,
         name: data.name,
         duration: data.duration ?? DEFAULT_DURATION,
         description: data.description,

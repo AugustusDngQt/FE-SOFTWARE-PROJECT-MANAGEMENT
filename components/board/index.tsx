@@ -1,6 +1,5 @@
 "use client";
 import React, { Fragment, useCallback, useLayoutEffect, useRef } from "react";
-import { type IssueStatus } from "@prisma/client";
 import "@/styles/split.css";
 import { BoardHeader } from "./header";
 import {
@@ -28,8 +27,14 @@ import { useSprints } from "@/hooks/query-hooks/use-sprints";
 import { useProject } from "@/hooks/query-hooks/use-project";
 import { useFiltersContext } from "@/context/use-filters-context";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import type { Sprint, IssueStatus } from "@/utils/type";
+import { EIssueStatus } from "@/utils/type";
 
-const STATUSES: IssueStatus[] = ["TODO", "IN_PROGRESS", "DONE"];
+const STATUSES: IssueStatus[] = [
+  EIssueStatus.TODO,
+  EIssueStatus.IN_PROGRESS,
+  EIssueStatus.DONE,
+];
 
 const Board: React.FC = () => {
   const renderContainerRef = useRef<HTMLDivElement>(null);
@@ -59,7 +64,12 @@ const Board: React.FC = () => {
           if (assigneeNotInFilters({ issue, assignees })) return false;
           if (epicNotInFilters({ issue, epics })) return false;
           if (issueTypeNotInFilters({ issue, issueTypes })) return false;
-          if (issueSprintNotInFilters({ issue, sprintIds: filterSprints })) {
+          if (
+            issueSprintNotInFilters({
+              issue,
+              sprintIds: filterSprints.map((sprint: Sprint) => sprint.id),
+            })
+          ) {
             return false;
           }
           return true;

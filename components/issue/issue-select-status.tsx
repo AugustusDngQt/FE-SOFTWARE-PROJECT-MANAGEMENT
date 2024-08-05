@@ -2,7 +2,6 @@ import { Fragment, useState } from "react";
 import { useIssues } from "@/hooks/query-hooks/use-issues";
 import { FaChevronDown } from "react-icons/fa";
 import clsx from "clsx";
-import { type IssueStatus } from "@prisma/client";
 import { type IssueType } from "@/utils/types";
 import { NotImplemented } from "@/components/not-implemented";
 import { capitalizeMany } from "@/utils/helpers";
@@ -19,24 +18,25 @@ import {
   SelectViewport,
 } from "@/components/ui/select";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { EIssueStatus, type IssueStatus } from "@/utils/type";
 
 export const statuses: StatusObject[] = [
   {
-    value: "TODO",
+    value: EIssueStatus.TODO,
     smBgColor: "#f5f5f5",
     lgBgColor: "#f5f5f5",
     smTextColor: "#383939",
     lgTextColor: "#383939",
   },
   {
-    value: "IN_PROGRESS",
+    value: EIssueStatus.IN_PROGRESS,
     smBgColor: "#e0ecfc",
     lgBgColor: "#0854cc",
     smTextColor: "#0854cc",
     lgTextColor: "#fff",
   },
   {
-    value: "DONE",
+    value: EIssueStatus.DONE,
     smBgColor: "#e8fcec",
     lgBgColor: "#08845c",
     smTextColor: "#08845c",

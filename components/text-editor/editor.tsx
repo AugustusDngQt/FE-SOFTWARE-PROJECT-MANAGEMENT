@@ -78,7 +78,7 @@ export const Editor: React.FC<{
           onClick={() => onSave && onSave(jsonState)}
           customColors
           customPadding
-          className="bg-inprogress px-2.5 py-1.5 text-sm font-medium text-white hover:brightness-110"
+          className="bg-blue-700 px-2.5 py-1.5 text-sm font-medium text-white hover:brightness-110"
         >
           Save
         </Button>
