@@ -10,6 +10,7 @@ export const sprintsRoutes = {
     try {
       const { data } = await axios.post<PostSprintResponse>(
         `${baseUrl}/sprints`,
+        {},
         {
           headers: getHeaders(),
         }
@@ -23,14 +24,14 @@ export const sprintsRoutes = {
     const { data } = await axios.get<GetSprintsResponse>(`${baseUrl}/sprints`, {
       headers: getHeaders(),
     });
-    return data.sprints;
+    return data;
   },
   patchSprint: async ({
     sprintId,
     ...body
   }: PatchSprintBody & { sprintId: string }) => {
     const { data } = await axios.patch<PatchSprintResponse>(
-      `${baseUrl}/api/sprints/${sprintId}`,
+      `${baseUrl}/sprints/${sprintId}`,
       body,
       {
         headers: getHeaders(),

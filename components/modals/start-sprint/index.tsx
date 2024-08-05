@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use client";
 import { useState, type ReactNode } from "react";
 import {
@@ -9,8 +10,8 @@ import {
   ModalTitle,
   ModalTrigger,
 } from "@/components/ui/modal";
-import { type Sprint } from "@prisma/client";
 import { StartSprintForm } from "./form";
+import { type Sprint } from "@/utils/type";
 
 const StartSprintModal: React.FC<{
   children: ReactNode;

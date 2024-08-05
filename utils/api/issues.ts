@@ -39,7 +39,7 @@ export const issuesRoutes = {
   },
   postIssue: async (body: PostIssueBody) => {
     const { data } = await axios.post<PostIssueResponse>(
-      `${baseUrl}/api/issues`,
+      `${baseUrl}/issues`,
       body,
       { headers: getHeaders() }
     );
@@ -83,7 +83,8 @@ export const issuesRoutes = {
   },
   getIssueComments: async ({ issueId }: { issueId: string }) => {
     const { data } = await axios.get<GetIssueCommentsResponse>(
-      `${baseUrl}/api/issues/${issueId}/comments`
+      `${baseUrl}/comments/${issueId}`,
+      { headers: getHeaders() }
     );
 
     return data?.comments;

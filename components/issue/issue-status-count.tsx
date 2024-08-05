@@ -21,9 +21,9 @@ const IssueStatusCount: React.FC<{ issues: IssueType[] }> = ({ issues }) => {
           key={status}
           count={count}
           className={clsx(
-            status == "TODO" && "bg-todo text-black",
-            status == "IN_PROGRESS" && "bg-inprogress text-white",
-            status == "DONE" && "bg-done text-white"
+            status == "TODO" && "bg-gray-300 py-1 text-black",
+            status == "IN_PROGRESS" && "bg-blue-700 py-1 text-white",
+            status == "DONE" && "bg-green-800 py-1 text-white"
           )}
         />
       ))}

@@ -1,5 +1,4 @@
 "use client";
-import { type Sprint } from "@prisma/client";
 import { useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { NameField } from "./fields/name";
@@ -10,6 +9,7 @@ import { DescriptionField } from "./fields/description";
 import { useSprints } from "@/hooks/query-hooks/use-sprints";
 import { FormSubmit } from "@/components/form/submit";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { type Sprint } from "@/utils/type";
 
 export type FormValues = {
   name: string;

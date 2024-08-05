@@ -3,7 +3,7 @@ import { BsBookmarkFill, BsFillRecordFill } from "react-icons/bs";
 import { FaCheck } from "react-icons/fa";
 import { HiLightningBolt } from "react-icons/hi";
 import clsx from "clsx";
-import { type Issue as IssueType } from "@prisma/client";
+import { type Issue as IssueType } from "@/utils/type";
 import { SubTaskIcon } from "../svgs";
 
 type IssueIconProps = {
@@ -23,7 +23,7 @@ const Icon: React.FC<{ children: ReactNode; className?: string }> = ({
 
 const _SubTaskIcon = () => {
   return (
-    <Icon className="h-fit bg-task">
+    <Icon className="bg-task h-fit">
       <SubTaskIcon className="text-white" />
     </Icon>
   );
@@ -31,7 +31,7 @@ const _SubTaskIcon = () => {
 
 const TaskIcon = () => {
   return (
-    <Icon className="h-fit bg-task">
+    <Icon className="bg-task h-fit bg-blue-600">
       <FaCheck className=" p-0.5 text-white" />
     </Icon>
   );
@@ -39,7 +39,7 @@ const TaskIcon = () => {
 
 const StoryIcon = () => {
   return (
-    <Icon className="h-fit bg-story">
+    <Icon className="h-fit bg-green-600">
       <BsBookmarkFill className="p-0.5" />
     </Icon>
   );
@@ -47,7 +47,7 @@ const StoryIcon = () => {
 
 const BugIcon = () => {
   return (
-    <Icon className="h-fit bg-bug">
+    <Icon className="h-fit bg-red-600">
       <BsFillRecordFill />
     </Icon>
   );
@@ -55,7 +55,7 @@ const BugIcon = () => {
 
 const EpicIcon = () => {
   return (
-    <Icon className="h-fit bg-epic">
+    <Icon className="bg-epic h-fit">
       <HiLightningBolt />
     </Icon>
   );

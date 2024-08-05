@@ -28,6 +28,7 @@ import {
 import { useFiltersContext } from "@/context/use-filters-context";
 import { ProgressBar } from "@/components/progress-bar";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { EIssueType } from "@/utils/type";
 
 type CreateIssueProps = {
   name: string;
@@ -66,9 +67,8 @@ const EpicsTable: React.FC = () => {
         name,
         type,
         parentId,
-        sprintId: null,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        reporterId: undefined,
+        sprintId: "",
+        reporterId: "",
         sprintColor,
       },
       {
@@ -102,7 +102,7 @@ const EpicsTable: React.FC = () => {
           onCreate={({ name }) =>
             handleCreateIssue({
               name,
-              type: "EPIC",
+              type: EIssueType.EPIC,
               sprintColor: LIGHT_COLORS[0]?.hex ?? null,
             })
           }

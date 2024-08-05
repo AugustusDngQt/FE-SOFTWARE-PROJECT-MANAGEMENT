@@ -26,6 +26,7 @@ export default function LoginPage() {
 
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
+      localStorage.setItem("user", JSON.stringify(user));
 
       toast.success({
         message: `Login successful, welcome ${user.name}`,

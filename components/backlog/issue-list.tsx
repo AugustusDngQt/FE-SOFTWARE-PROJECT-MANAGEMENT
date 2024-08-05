@@ -47,7 +47,7 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
         type,
         parentId: null,
         sprintId,
-        reporterId: null,
+        reporterId: "user_2kBNUkiLySxvE4gDJaHQCF5d0CN",
       },
       {
         onSuccess: () => {
@@ -86,7 +86,7 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
         className="my-1 flex w-full bg-transparent hover:bg-gray-200 [&[data-state=closed]]:hidden"
       >
         <AiOutlinePlus className="text-sm" />
-        <span className="text-sm">Create Issue</span>
+        <span className="ml-1 text-sm">Create Issue</span>
       </Button>
 
       <EmtpyIssue

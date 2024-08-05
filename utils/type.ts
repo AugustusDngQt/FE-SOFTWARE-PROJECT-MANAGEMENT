@@ -186,6 +186,12 @@ export type PostCommentBody = z.infer<typeof postCommentBodyValidator>;
 export type GetSprintsResponse = {
   sprints: Sprint[];
 };
+export type GetUserResponse = {
+  user: DefaultUser;
+};
+export type GetUsersResponse = {
+  users: DefaultUser[];
+};
 export type PostSprintResponse = {
   sprint: Sprint;
 };

@@ -54,7 +54,7 @@ export function isSubtask(issue: IssueType | null) {
 
 export function hasChildren(issue: IssueType | IssueType["parent"] | null) {
   if (!issue) return false;
-  return issue.children.length > 0;
+  return issue.children?.length > 0;
 }
 
 export function sprintId(id: string | null | undefined) {
