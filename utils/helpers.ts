@@ -1,16 +1,16 @@
 import { type IssueCountType } from "./types";
 import { type IssueType } from "@/utils/types";
-import type { DefaultUser, Issue, Sprint } from "./type";
+import type { DefaultUser, Issue } from "./type";
 
 // type Value<T> = T extends Promise<infer U> ? U : T;
 
 export function getBaseUrl() {
   // if (typeof window !== "undefined") return ""; // browser should use relative url
   // if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`; // SSR should use vercel url
-  return `http://localhost:${process.env.port || 8080}`; // dev SSR should use localhost
+  return `http://localhost:8080`; // dev SSR should use localhost
 }
 
-export function getHeaders() {
+export function getHeaders(): { Authorization: string } {
   const token = localStorage.getItem("accessToken");
   return {
     Authorization: `Bearer ${token as string}`,

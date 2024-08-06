@@ -8,11 +8,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Avatar } from "@/components/avatar";
 import { useSprints } from "@/hooks/query-hooks/use-sprints";
 import { IssueAssigneeSelect } from "../../issue-select-assignee";
 import { useIssues } from "@/hooks/query-hooks/use-issues";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const IssueDetailsInfoAccordion: React.FC<{ issue: IssueType }> = ({
   issue,
@@ -90,10 +90,12 @@ const IssueDetailsInfoAccordion: React.FC<{ issue: IssueType }> = ({
               Reporter
             </span>
             <div className="flex items-center gap-x-3 ">
-              <Avatar
-                src={issue.reporter?.avatar}
-                alt={`${issue.reporter?.name ?? "Unassigned"}`}
-              />
+              <Avatar>
+                <AvatarImage
+                  src={(issue.reporter?.avatar as string) ?? ""}
+                  alt={`${issue.reporter?.name ?? "Unassigned"}`}
+                />
+              </Avatar>
               <span className="whitespace-nowrap text-sm">
                 {issue.reporter?.name}
               </span>

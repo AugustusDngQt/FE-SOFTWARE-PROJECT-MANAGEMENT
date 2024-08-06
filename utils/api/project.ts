@@ -21,6 +21,32 @@ export const projectRoutes = {
         headers: getHeaders(),
       }
     );
+    console.log(data?.members);
+
     return data?.members;
+  },
+
+  getConversation: async ({ project_id }: { project_id: string }) => {
+    const { data } = await axios.get<{ conversation: any }>(
+      `${baseUrl}/conversations/find-by-project-id/${project_id}`,
+      {
+        headers: getHeaders(),
+      }
+    );
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return data?.conversation;
+  },
+
+  getMessage: async ({ project_id }: { project_id: string }) => {
+    const { data } = await axios.get<{ messages: any[] }>(
+      `${baseUrl}/messages/find-by-project-id/${project_id}`,
+      {
+        headers: getHeaders(),
+      }
+    );
+
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return data?.messages;
   },
 };

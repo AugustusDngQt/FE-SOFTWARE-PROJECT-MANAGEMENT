@@ -8,13 +8,13 @@ import { Fragment, useRef, useState } from "react";
 import { useIsInViewport } from "@/hooks/use-is-in-viewport";
 import { type SerializedEditorState } from "lexical";
 import { type IssueType } from "@/utils/types";
-import { Avatar } from "@/components/avatar";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { EditorPreview } from "@/components/text-editor/preview";
 import { Button } from "@/components/ui/button";
 import { useIsAuthenticated } from "@/hooks/use-is-authed";
 import type { Comment } from "@/utils/type";
+import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 dayjs.extend(relativeTime);
 
@@ -107,10 +107,12 @@ const CommentPreview: React.FC<{
 
   return (
     <div className="flex w-full gap-x-2">
-      <Avatar
-        src={comment.author?.avatar ?? ""}
-        alt={`${comment.author?.name ?? "Guest"}`}
-      />
+      <Avatar>
+        <AvatarImage
+          src={(comment.author?.avatar as string) ?? ""}
+          alt="User Avatar"
+        />
+      </Avatar>
       <div className="w-full">
         <div className="flex items-center gap-x-3 text-xs">
           <span className="font-semibold text-gray-600 ">

@@ -20,10 +20,11 @@ export const sprintsRoutes = {
       console.error(error);
     }
   },
-  getSprints: async () => {
+  getSprints: async (): Promise<GetSprintsResponse> => {
     const { data } = await axios.get<GetSprintsResponse>(`${baseUrl}/sprints`, {
       headers: getHeaders(),
     });
+
     return data;
   },
   patchSprint: async ({

@@ -20,7 +20,6 @@ export default function LoginPage() {
 
     try {
       const responseData = await authRoutes.login({ username, password });
-      console.log("responseData", responseData);
 
       const { user, accessToken, refreshToken } = responseData;
 
@@ -34,10 +33,8 @@ export default function LoginPage() {
       });
 
       router.push("/project/backlog");
-    } catch (err) {
+    } catch (err: any) {
       const errorInfo: IErrorResponse = err.response?.data as IErrorResponse;
-
-      console.log("errorInfo", errorInfo);
 
       toast.error({
         message: "Login failed",

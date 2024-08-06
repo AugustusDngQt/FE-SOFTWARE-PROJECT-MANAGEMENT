@@ -29,6 +29,7 @@ export type Issue = {
   assigneeId: string | null;
   parentId: string | null;
   sprintId: string | null;
+  projectId: string;
   isDeleted: boolean;
   createdAt: Date;
   updatedAt: Date;
@@ -45,6 +46,7 @@ export type Sprint = {
   startDate: Date | null;
   endDate: Date | null;
   creatorId: string;
+  projectId: string;
   createdAt: Date;
   updatedAt: Date | null;
   deletedAt: Date | null;
@@ -184,6 +186,7 @@ const postCommentBodyValidator = z.object({
 
 export type PostCommentBody = z.infer<typeof postCommentBodyValidator>;
 export type GetSprintsResponse = {
+  map(arg0: (sprint: Sprint) => JSX.Element): import("react").ReactNode;
   sprints: Sprint[];
 };
 export type GetUserResponse = {

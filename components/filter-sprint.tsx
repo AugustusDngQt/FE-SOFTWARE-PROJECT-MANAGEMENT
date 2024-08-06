@@ -11,7 +11,7 @@ import { useFiltersContext } from "@/context/use-filters-context";
 import { Button } from "@/components/ui/button";
 import { CountBall } from "./issue/issue-status-count";
 import { useSprints } from "@/hooks/query-hooks/use-sprints";
-import { type Sprint } from "@prisma/client";
+import { type Sprint } from "@/utils/type";
 const SprintFilter: React.FC = () => {
   const { sprints: filterSprints, setSprints } = useFiltersContext();
   const { sprints } = useSprints();
@@ -63,7 +63,7 @@ const SprintFilter: React.FC = () => {
               <div className="flex items-center gap-x-2 hover:cursor-default">
                 <input
                   type="checkbox"
-                  className="form-checkbox h-3 w-3 rounded-sm text-inprogress"
+                  className="form-checkbox text-inprogress h-3 w-3 rounded-sm"
                   checked={filterSprints.includes(sprint.id)}
                 />
                 <TooltipWrapper text={sprint.name}>

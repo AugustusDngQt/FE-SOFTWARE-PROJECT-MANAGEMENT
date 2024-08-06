@@ -12,7 +12,6 @@ const IssueDetails: React.FC<{
 }> = ({ issueKey, setIssueKey }) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { issues } = useIssues();
-  console.log("issues", issues);
 
   const renderContainerRef = React.useRef<HTMLDivElement>(null);
   const [isInViewport, viewportRef] = useIsInViewport({ threshold: 1 });

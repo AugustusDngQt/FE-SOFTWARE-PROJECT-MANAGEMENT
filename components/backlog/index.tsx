@@ -8,9 +8,16 @@ import "@/styles/split.css";
 import clsx from "clsx";
 import { BacklogHeader } from "./header";
 import { useProject } from "@/hooks/query-hooks/use-project";
+import { useState } from "react";
+import ChatBox from "@/components/chatbox/chatbox";
 
 const Backlog: React.FC = () => {
-  const { project } = useProject();
+  const [showChat, setShowChat] = useState(false);
+
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  const { project, conversation, messages } = useProject();
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  console.log({ project, conversation, messages });
 
   const { issueKey, setIssueKey } = useSelectedIssueContext();
   const renderContainerRef = React.useRef<HTMLDivElement>(null);
@@ -36,6 +43,15 @@ const Backlog: React.FC = () => {
           <ListGroup className={clsx(issueKey && "pb-5 pr-4")} />
           <IssueDetails setIssueKey={setIssueKey} issueKey={issueKey} />
         </Split>
+        {conversation && messages && (
+          <ChatBox
+            showChat={showChat}
+            setShowChat={setShowChat}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            conversation={conversation}
+            messages={messages}
+          />
+        )}
       </div>
     </Fragment>
   );
