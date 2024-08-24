@@ -17,7 +17,6 @@ const Backlog: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { project, conversation, messages } = useProject();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  console.log({ project, conversation, messages });
 
   const { issueKey, setIssueKey } = useSelectedIssueContext();
   const renderContainerRef = React.useRef<HTMLDivElement>(null);

@@ -21,7 +21,6 @@ export const projectRoutes = {
         headers: getHeaders(),
       }
     );
-    console.log(data?.members);
 
     return data?.members;
   },

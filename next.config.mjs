@@ -23,8 +23,12 @@ const config = {
     ];
   },
   images: {
-    domains: ["*"], // Cho phép tất cả các domain
-    formats: ["image/avif", "image/webp"], // Bao gồm nhiều định dạng hình ảnh
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**", // Cho phép tất cả các hostname
+      },
+    ],
   },
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you

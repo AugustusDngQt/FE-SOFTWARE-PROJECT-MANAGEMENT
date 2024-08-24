@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SendHorizontal, Minus } from "lucide-react";
-import { io, Socket } from "socket.io-client";
+import { io, type Socket } from "socket.io-client";
 import { getBaseUrl, getHeaders } from "@/utils/helpers";
 import { type IUserLogin } from "@/utils/interface/auth/user-login.interface";
 
@@ -44,7 +44,6 @@ export const ChatBox: React.FC<ChatBoxProps> = ({
     senderId: item.senderId as string,
   }));
   const [mess, setMess] = useState<IDataMessage[]>(messageConvertType);
-  console.log("mess", mess);
 
   const [message, setMessage] = useState<string>("");
   const socketRef = useRef<Socket>();

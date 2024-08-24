@@ -7,9 +7,9 @@ import { DropdownTrigger } from "../ui/dropdown-menu";
 import { BsThreeDots } from "react-icons/bs";
 import { isEpic } from "@/utils/helpers";
 import { EpicName } from "../backlog/issue";
+import { Avatar } from "../avatar";
 
 import { useSelectedIssueContext } from "@/context/use-selected-issue-context";
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 const Issue: React.FC<{ issue: IssueType; index: number }> = ({
   issue,
@@ -56,12 +56,10 @@ const Issue: React.FC<{ issue: IssueType; index: number }> = ({
                 {issue.key}
               </span>
             </div>
-            <Avatar className="h-20 w-20">
-              <AvatarImage
-                src="{issue.assignee?.avatar}"
-                alt={issue.assignee?.name ?? "Unassigned"}
-              />
-            </Avatar>
+            <Avatar
+              src={issue.assignee?.avatar}
+              alt={issue.assignee?.name ?? "unassigned"}
+            />
           </div>
         </div>
       )}

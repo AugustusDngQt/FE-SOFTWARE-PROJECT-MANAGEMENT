@@ -50,6 +50,8 @@ export const issuesRoutes = {
     issueId,
     ...body
   }: { issueId: string } & PatchIssueBody) => {
+    console.log("body", body);
+
     const { data } = await axios.patch<PatchIssueResponse>(
       `${baseUrl}/issues/${issueId}`,
       body,

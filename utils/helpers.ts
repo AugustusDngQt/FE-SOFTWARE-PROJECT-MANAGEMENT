@@ -83,6 +83,8 @@ export function issueNotInSearch({
   issue: IssueType;
   search: string;
 }) {
+  console.log("issue", issue);
+
   return (
     search.length &&
     !(

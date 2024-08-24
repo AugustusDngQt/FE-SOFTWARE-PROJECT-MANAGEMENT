@@ -42,6 +42,7 @@ const Board: React.FC = () => {
   const { issues } = useIssues();
   const { sprints } = useSprints();
   const { project } = useProject();
+
   const {
     search,
     assignees,
@@ -54,12 +55,7 @@ const Board: React.FC = () => {
     (issues: IssueType[] | undefined, status: IssueStatus) => {
       if (!issues) return [];
       const filteredIssues = issues.filter((issue) => {
-        if (
-          issue.status === status &&
-          issue.sprintIsActive &&
-          !isEpic(issue) &&
-          !isSubtask(issue)
-        ) {
+        if (issue.status === status && !isEpic(issue) && !isSubtask(issue)) {
           if (issueNotInSearch({ issue, search })) return false;
           if (assigneeNotInFilters({ issue, assignees })) return false;
           if (epicNotInFilters({ issue, epics })) return false;
@@ -107,7 +103,7 @@ const Board: React.FC = () => {
       issueId: result.draggableId,
       status: destination.droppableId as IssueStatus,
       boardPosition: calculateIssueBoardPosition({
-        activeIssues: issues.filter((issue) => issue.sprintIsActive),
+        activeIssues: issues,
         destination,
         source,
         droppedIssueId: result.draggableId,
