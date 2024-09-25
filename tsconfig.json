@@ -33,7 +33,11 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "test/**/*.spec.js",
+    "test/**/*.js",
+    "test/**/*.ts",
+    "test/**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
