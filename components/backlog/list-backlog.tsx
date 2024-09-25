@@ -71,7 +71,7 @@ const BacklogListHeader: React.FC<{ issues: IssueType[] }> = ({ issues }) => {
       <div className="flex items-center gap-x-2 py-2">
         <IssueStatusCount issues={issues} />
         <Button onClick={handleCreateSprint}>
-          <span className="whitespace-nowrap">Create Sprint</span>
+          <span className="create-sprint whitespace-nowrap">Create Sprint</span>
         </Button>
       </div>
     </div>

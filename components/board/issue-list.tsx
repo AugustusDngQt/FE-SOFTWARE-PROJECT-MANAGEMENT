@@ -34,7 +34,7 @@ const IssueList: React.FC<{ status: IssueStatus; issues: IssueType[] }> = ({
           <div
             {...droppableProps}
             ref={innerRef}
-            className=" h-fit min-h-[10px]"
+            className="h-fit min-h-[10px]"
           >
             {issues
               .sort((a, b) => a.boardPosition - b.boardPosition)

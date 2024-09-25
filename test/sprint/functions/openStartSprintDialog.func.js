@@ -2,10 +2,10 @@
 // @ts-nocheck
 import { By } from "selenium-webdriver";
 
-export const openStartSprintDialog = async (driver) => {
-  const sprintListElement = await driver.findElements(By.css(".sprint-ne"));
-  const startSprintButtonElement = sprintListElement[0].findElement(
-    By.css("button > span")
+export const openStartSprintDialog = async (startSprintButtonElement) => {
+  const startSprintSpanElement = await startSprintButtonElement.findElement(
+    By.css("span")
   );
-  await startSprintButtonElement.click();
+
+  await startSprintSpanElement.click();
 };

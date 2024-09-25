@@ -91,7 +91,7 @@ const IssueSelectStatus: React.FC<{
 
   return (
     <Fragment>
-      <Select onValueChange={handleSelectChange}>
+      <Select key={"select-status"} onValueChange={handleSelectChange}>
         <SelectTrigger
           onClick={(e) => e.stopPropagation()}
           disabled={isUpdating}

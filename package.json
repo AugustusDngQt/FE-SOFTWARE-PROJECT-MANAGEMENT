@@ -10,7 +10,9 @@
     "lint": "next lint",
     "start": "next start",
     "test:login": "mocha test/login/main.spec.js",
-    "test:sprint": "mocha test/sprint/main.spec.js"
+    "test:sprint": "mocha test/sprint/main.spec.js",
+    "test:process": "mocha test/projectProcess/main.spec.js",
+    "test:chat": "mocha test/chat/main.spec.js"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React, { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -44,8 +43,11 @@ export const ChatBox: React.FC<ChatBoxProps> = ({
     senderId: item.senderId as string,
   }));
   const [mess, setMess] = useState<IDataMessage[]>(messageConvertType);
-
   const [message, setMessage] = useState<string>("");
+
+  // Ref để trỏ tới phần chứa các tin nhắn
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+
   const socketRef = useRef<Socket>();
 
   useEffect(() => {
@@ -64,6 +66,14 @@ export const ChatBox: React.FC<ChatBoxProps> = ({
       socketRef.current?.disconnect();
     };
   }, []);
+
+  // Cuộn xuống cuối cùng mỗi khi mess thay đổi
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [mess]); // Trigger useEffect khi mess thay đổi
+
   const sendMessage = () => {
     if (message !== null) {
       const dataSendToServer: ISendMessage = {
@@ -75,14 +85,9 @@ export const ChatBox: React.FC<ChatBoxProps> = ({
       setMess((oldMsgs: IDataMessage[]) => [...oldMsgs, dataMessage]);
       socketRef.current?.emit("sendDataServer", dataSendToServer);
       setMessage("");
-
-      //Khi emit('sendDataClient') bên phía server sẽ nhận được sự kiện có tên 'sendDataClient' và handle như câu lệnh trong file index.js
-      // socket.on("sendDataClient", function (data) {
-      //   // Handle khi có sự kiện tên là sendDataClient từ phía client
-      //   socketIo.emit("sendDataServer", { data }); // phát sự kiện  có tên sendDataServer cùng với dữ liệu tin nhắn từ phía server
-      // });
     }
   };
+
   return (
     <>
       {showChat && (
@@ -126,6 +131,8 @@ export const ChatBox: React.FC<ChatBoxProps> = ({
                     </div>
                   ))
                 : ""}
+              {/* Thêm một div ẩn để đảm bảo scroll đến cuối */}
+              <div ref={messagesEndRef} />
             </div>
           </div>
           <div className="mb-2 mt-1 flex items-center p-6 pt-0">

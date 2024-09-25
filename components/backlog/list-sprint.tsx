@@ -168,7 +168,7 @@ const SprintActionButton: React.FC<{ sprint: Sprint; issues: IssueType[] }> = ({
   if (sprint.status === "ACTIVE") {
     return (
       <CompleteSprintModal issues={issues} sprint={sprint}>
-        <Button>
+        <Button className="open-dialog-complete-sprint-button">
           <span className="whitespace-nowrap">Complete sprint</span>
         </Button>
       </CompleteSprintModal>
@@ -178,7 +178,7 @@ const SprintActionButton: React.FC<{ sprint: Sprint; issues: IssueType[] }> = ({
   if (sprint.status === "PENDING") {
     return (
       <StartSprintModal issueCount={issues.length} sprint={sprint}>
-        <Button>
+        <Button className="open-dialog-start-sprint-button">
           <span className="whitespace-nowrap">Start sprint</span>
         </Button>
       </StartSprintModal>

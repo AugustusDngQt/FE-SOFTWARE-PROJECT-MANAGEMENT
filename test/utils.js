@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import { By } from "selenium-webdriver";
+
 export const clearFields = async (...elements) => {
   await Promise.all(elements.map((element) => element.clear()));
 };
@@ -59,4 +61,11 @@ export const setValueInputTypeDate = async (driver, element, value) => {
 
 export const changeDuration = async (element, value) => {
   await element.sendKeys(value);
+};
+
+export const getSprintElement = async (driver, place = "Top") => {
+  const sprintListElement = await driver.findElements(By.css(".sprint-ne"));
+  const index = place === "Top" ? 0 : sprintListElement.length - 1;
+
+  return sprintListElement[index];
 };

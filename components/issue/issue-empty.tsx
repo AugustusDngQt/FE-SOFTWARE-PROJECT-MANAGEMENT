@@ -112,7 +112,7 @@ const EmtpyIssue: React.FC<{
             <MdClose className="text-sm" />
           </Button>
           <Button
-            className="aspect-square shadow-md"
+            className="save-change aspect-square shadow-md"
             onClick={() =>
               onCreate({
                 name,
@@ -121,7 +121,7 @@ const EmtpyIssue: React.FC<{
               })
             }
           >
-            <MdCheck className="text-sm" />
+            <MdCheck className=" text-sm" />
           </Button>
         </div>
       )}

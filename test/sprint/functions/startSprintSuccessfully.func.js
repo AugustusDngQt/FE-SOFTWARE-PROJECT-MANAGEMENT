@@ -7,7 +7,7 @@ export const startSprintSuccessfully = async (
   selectDurationElement,
   startSprintButtonElement
 ) => {
-  await changeDuration(selectDurationElement, "1 week");
-  await pauseBetweenCases(2500);
+  await changeDuration(selectDurationElement, "2 weeks");
+  await pauseBetweenCases(2000);
   await startSprintButtonElement.click();
 };

@@ -66,7 +66,7 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
             className={clsx(issues.length == 0 && "min-h-[1px]")}
           >
             <div
-              className={clsx(issues.length && "border-[0.3px]", "divide-y ")}
+              className={clsx(issues.length && "border-[0.3px]", " divide-y")}
             >
               {issues
                 .sort((a, b) => a.sprintPosition - b.sprintPosition)
@@ -86,7 +86,7 @@ const IssueList: React.FC<{ sprintId: string | null; issues: IssueType[] }> = ({
         className="my-1 flex w-full bg-transparent hover:bg-gray-200 [&[data-state=closed]]:hidden"
       >
         <AiOutlinePlus className="text-sm" />
-        <span className="ml-1 text-sm">Create Issue</span>
+        <span className="create-issue ml-1 text-sm">Create Issue</span>
       </Button>
 
       <EmtpyIssue
